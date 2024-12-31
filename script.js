@@ -93,7 +93,8 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'project3':
                 projectContent.innerHTML = `
                     <h2>Project Three: Computer Hardware Technician</h2>
-                    <p>This project involves diagnosing, repairing, and upgrading various hardware components such as motherboards, RAM, and CPUs.</p>
+                    
+                    <p>Diagnosing, repairing, and upgrading a wide range of computer hardware components, including motherboards, CPUs, RAM, hard drives, and peripheral devices.</p>
                 `;
                 break;
             default:
@@ -229,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <div class="card-icon">🖥️</div>
                                 <div class="card-content">
                                     <h3>COMPUTER HARDWARE TECHNICIAN</h3>
-                                    <p>Diagnosing, repairing, and upgrading a wide range of computer hardware components, including motherboards, CPUs, RAM, hard drives, and peripheral devices.</p>
+                                    <p>This project involves diagnosing, repairing, and upgrading various hardware components such as motherboards, RAM, and CPUs.</p>
                                 </div>
                             </div>
                         </div>
