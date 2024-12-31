@@ -1,0 +1,526 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-primary: #21294d;
+    --text-primary: #ffffff;
+    --accent-color: #6b7afc;
+    --secondary-color: #373b49;
+}
+
+/* Ensure the body and html elements take full height */
+/* Ensure the body and html elements take full height */
+body, html {
+    height: 100%;
+    font-family: 'Inter', sans-serif;
+    margin: 0; /* Remove any default margin */
+    padding: 0;
+    overflow: hidden; /* Prevents unwanted scrollbars */
+}
+
+/* Parent container to hold all content */
+.container {
+    height: 100%; /* Full height of the viewport */
+    width: 100%; /* Full width */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Background overlay - covering the whole page */
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('path-to-your-image.jpg'); /* Change this to your image path */
+    background-size: cover;
+    background-position: center;
+    z-index: -1; /* Ensures the overlay is behind the content */
+}
+
+/* Optional: Content styling (e.g., profile image, cards) */
+.profile-section {
+    text-align: center;
+    margin-bottom: 30px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards;
+}
+
+/* Fade in animation */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Example content styling (you can remove or modify based on your design) */
+.profile-image-container {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 20px;
+    border: 4px solid rgba(107, 122, 252, 0.3);
+    box-shadow: 0 10px 25px rgba(107, 122, 252, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.profile-image-container:hover {
+    transform: scale(1.05);
+}
+
+.profile-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-container {
+    display: flex;
+    gap: 20px;
+}
+
+
+.card {
+    width: 250px;
+    height: 300px;
+    background: rgba(44, 47, 58, 0.5);
+    backdrop-filter: blur(15px);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(107, 122, 252, 0.2);
+    position: relative;
+    overflow: hidden;
+    transform: perspective(1000px) rotateX(10deg);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.card:hover {
+    transform: perspective(1000px) rotateX(0) scale(1.05);
+    box-shadow: 0 15px 35px rgba(107, 122, 252, 0.2);
+}
+
+.card-content {
+    z-index: 1;
+    color: var(--text-primary);
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.card-content h2 {
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--accent-color);
+}
+
+/* Modal Styles */
+.full-page-content {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    overflow: auto;
+    padding: 20px;
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+
+.full-page-content .project-content {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 800px;
+    margin: 5% auto;
+    color: #fff;
+}
+
+.full-page-content .close-btn {
+    font-size: 28px;
+    cursor: pointer;
+    color: #fff;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    transition: transform 0.3s ease;
+}
+
+.full-page-content .close-btn:hover {
+    transform: rotate(90deg);
+}
+
+.full-page-content h2 {
+    color: #6b7afc;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.full-page-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.full-page-content ul li {
+    margin-bottom: 10px;
+}
+
+/* Ensure responsiveness on smaller screens */
+@media (max-width: 768px) {
+    .full-page-content .project-content {
+        max-width: 90%;
+    }
+
+    .full-page-content .close-btn {
+        top: 5px;
+        right: 10px;
+    }
+}
+
+.section-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section-content h1 {
+    font-size: 3rem;
+    color: var(--accent-color);
+    margin-bottom: 30px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s 0.3s forwards;
+}
+
+.section-content p, 
+.section-content .content-grid {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s 0.5s forwards;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.content-card {
+    background-color: var(--secondary-color);
+    border-radius: 15px;
+    padding: 25px;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.content-card:hover {
+    transform: translateY(-10px);
+}
+
+.content-card h3 {
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+
+/*Resume Form*/
+#resume-page .skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#resume-page .info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+#resume-page .info-item .icon {
+    font-size: 1.5em;
+    color: #444;
+}
+
+#resume-page .info-item .details {
+    flex-grow: 1;
+}
+#resume-page .resume-card {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+#resume-page .resume-header {
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+#resume-page .resume-header h1 {
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+
+#resume-page .subtitle {
+    color: #ffffff;
+    font-size: 0.9em;
+}
+
+/* Style for the sections */
+#resume-page .resume-card section {
+    margin-bottom: 20px;
+}
+
+#resume-page .resume-card h2 {
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+/* Flexbox layout for side-by-side info with icons */
+#resume-page .info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px; /* Adds space between the icon and text */
+    margin-bottom: 15px;
+}
+
+#resume-page .info-item .icon {
+    font-size: 1.5em;
+    color: #fffefe;
+    flex-shrink: 0; /* Prevent the icon from resizing */
+}
+
+#resume-page .info-item .details {
+    flex-grow: 1; /* Ensure details take the remaining space */
+}
+
+#resume-page .details h3 {
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+
+#resume-page .location, #resume-page .duration {
+    color: #666;
+    font-size: 0.8em;
+}
+
+/* Skills layout */
+#resume-page .skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#resume-page .info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+#resume-page .info-item .icon {
+    font-size: 1.5em;
+    color: #ffffff;
+}
+
+#resume-page .info-item .details {
+    flex-grow: 1;
+}
+/* Portfolio Page Styles */
+#portfolio-page {
+    font-family: 'Arial', sans-serif;
+    background: #fffefe00;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+#portfolio-page h1 {
+    color: #6b7afc;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+#portfolio-page .card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-items: center;
+}
+
+#portfolio-page .card {
+    background: rgba(44, 47, 58, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+#portfolio-page .card:hover {
+    background-color: rgba(107, 122, 252, 0.3);
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(107, 122, 252, 0.2);
+}
+
+#portfolio-page .card .card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+#portfolio-page .card h3 {
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+#portfolio-page .card p {
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    overflow: auto;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    margin: 10% auto;
+    width: 60%;
+    max-width: 600px;
+    border-radius: 8px;
+    text-align: left;
+    color: #333;
+}
+
+.modal-content h2 {
+    font-size: 2rem;
+    color: #6b7afc;
+    margin-bottom: 20px;
+}
+
+.modal-content p {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+}
+
+.modal-content .close {
+    font-size: 28px;
+    cursor: pointer;
+    color: #6b7afc;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    transition: transform 0.3s ease;
+}
+
+.modal-content .close:hover {
+    transform: rotate(90deg);
+}
+
+
+/* Additional styles for contact cards */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.contact-card {
+    background-color: var(--secondary-color);
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(107, 122, 252, 0.2);
+}
+
+.contact-card-icon {
+    font-size: 2rem;
+    color: var(--accent-color);
+    min-width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-card-content h3 {
+    color: var(--accent-color);
+    margin-bottom: 5px;
+    font-size: 1rem;
+}
+
+.contact-card-content p {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    word-break: break-all;
+}
+.music-toggle {
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 2px solid #333;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.music-toggle:hover {
+    background-color: rgba(200, 200, 200, 0.9);
+    transform: scale(1.1);
+}
