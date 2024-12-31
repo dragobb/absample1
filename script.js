@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <div class="card-icon">🖥️</div>
                                 <div class="card-content">
                                     <h3>COMPUTER HARDWARE TECHNICIAN</h3>
-                                    <p>This project involves diagnosing, repairing, and upgrading various hardware components such as motherboards, RAM, and CPUs.</p>
+                                    <p>This project involves diagnosing, repairing, and upgrading hardware components such as motherboards, RAM, and CPUs.</p>
                                 </div>
                             </div>
                         </div>
